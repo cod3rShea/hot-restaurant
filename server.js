@@ -10,10 +10,16 @@ app.use(express.json());
 
 var reservations = [
     {
-        "customerName": "Sean",
+        "customerName": "Sean Shea",
         "customerEmail": "sshea@gmail.com",
         "customerID": "sshea89",
         "phoneNumber": "216-555-5555"
+    },
+    {
+        "customerName": "Joey Weedo",
+        "customerEmail": "jweedo88@gmail.com",
+        "customerID": "jweedo88",
+        "phoneNumber": "216-555-4444"
     },
 
 ];
