@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
@@ -23,7 +21,7 @@
     <div class="container">
         <div class="jumbotron">
             <h1 class="text-center"><i class="fa fa-beer" aria-hidden="true"></i>
-               Shea's Brewery</h1>
+                Shea's Brewery</h1>
             <hr>
             <div class="text-center">
                 <h2>
@@ -33,7 +31,8 @@
                     <button class="btn btn-lg btn-primary"><span class="fa fa-home"></span></button>
                 </a>
                 <a href="/reserve">
-                    <button class="btn btn-danger btn-lg"><span class="fa fa-calendar-check-o"></span> Make Reservations</button>
+                    <button class="btn btn-danger btn-lg"><span class="fa fa-calendar-check-o"></span> Make
+                        Reservations</button>
                 </a>
             </div>
 
@@ -71,6 +70,37 @@
             </p>
         </div>
     </footer>
+    <script type="text/javascript">
+
+        // QUESTION: What does $.get do? What are the parameters it is expecting?
+        jQuery.get("/api/tables/", function (data) {
+            console.log(data);
+            if (data) {
+                for (var i = 0; i < data.length; i++) {
+                    jQuery("#reserved-list").html("<h2><span class='label label-primary'>" + i + "</span> |" + data[i].customerName + "</h2>");
+                }
+            }
+            else {
+                jQuery("#reserved-list").text("There are no reservations.");
+            }
+        });
+
+        // QUESTION: What does $.get do? What are the parameters it is expecting?
+        jQuery.get("/api/waitlist/", function (data) {
+            console.log(data);
+            if (data) {
+                for (var j = 0; j < data.length; j++) {
+                    jQuery("#wait-list").html("<h2><span class='label label-primary'>" + j + "</span> |" + data[j].customerName + "</h2>");
+                }
+
+            }
+            else {
+                jQuery("#wait-list").text("There is no one waiting.");
+            }
+        });
+
+
+    </script>
 </body>
 
 </html>
