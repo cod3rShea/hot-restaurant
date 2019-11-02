@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reservations</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center"><i class="fa fa-beer" aria-hidden="true"></i>
+                Shea's Brewery</h1>
+            <hr>
+            <div class="text-center">
+                <h2>
+                    Current Reservations and Waiting List
+                </h2>
+                <a href="/">
+                    <button class="btn btn-lg btn-primary"><span class="fa fa-home"></span></button>
+                </a>
+                <a href="/tables">
+                    <button class="btn btn-danger btn-lg"><span class="fa fa-calendar-check-o"></span> View
+                        Tables</button>
+                </a>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Table Reservation</h3>
+                        <form>
+                            <div class="form-group">
+                                    <label for="person-name">Name</label>
+                                    <input type="text" class="form-control" id="person-name"
+                                    aria-describedby="User Name" placeholder="Enter name">
+                            </div>
+                            <div class="form-group">
+                                    <label for="phone-number">Phone Number</label>
+                                    <input type="text" class="form-control" id="phone-number"
+                                    aria-describedby="Phone Number" placeholder="216-555-5555">
+                            </div>
+                            <div class="form-group">
+                                <label for="user-email">Email address</label>
+                                <input type="email" class="form-control" id="user-email"
+                                    aria-describedby="User Email" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                    <label for="customer-id">Customer ID</label>
+                                    <input type="text" class="form-control" id="customer-id"
+                                    aria-describedby="User ID" placeholder="userName120">
+                            </div>
+                            <button type="submit" id="add-btn" class="btn btn-primary" onclick="test();">Submit</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <div class="container">
+            <p>
+                <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a>
+            </p>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        
+      </script>
+</body>
+
+</html>
