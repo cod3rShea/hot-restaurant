@@ -21,6 +21,24 @@ var reservations = [
         "customerID": "jweedo88",
         "phoneNumber": "216-555-4444"
     },
+    {
+        "customerName": "Joey Weedo",
+        "customerEmail": "jweedo88@gmail.com",
+        "customerID": "jweedo88",
+        "phoneNumber": "216-555-4444"
+    },
+    {
+        "customerName": "Joey Weedo",
+        "customerEmail": "jweedo88@gmail.com",
+        "customerID": "jweedo88",
+        "phoneNumber": "216-555-4444"
+    },
+    {
+        "customerName": "Joey Weedo",
+        "customerEmail": "jweedo88@gmail.com",
+        "customerID": "jweedo88",
+        "phoneNumber": "216-555-4444"
+    },
 
 ];
 
@@ -60,36 +78,25 @@ app.get("/api/waitlist", function (req, res) {
     return res.json(waitList);
 });
 
+
+console.log(reservations.length);
+
 var reservationsLength = reservations.length;
 
-if (reservationsLength < 6) {
-    function test() {
-        event.preventDefault();
-        alert('test');
-        var newCharacter = {
-            customerName: jQuery("#person-name").val().trim(),
-            customerEmail: jQuery("#phone-number").val().trim(),
-            customerID: jQuery("#user-email").val().trim(),
-            phoneNumber: jQuery("#customer-id").val().trim()
-        };
-        jQuery.post("/api/tables", newCharacter).then(function (data) {
-                alert("Added reservation");
-        });
-
-    }
+if (reservationsLength <= 5) {
+    app.post("/api/tables", function (req, res) {
+        var newcharacter = req.body;
+        console.log(newcharacter);
+        reservations .push(newcharacter);
+        res.json(newcharacter);
+    });
 } else {
-    function test() {
-        event.preventDefault();
-        var newCharacter = {
-            customerName: jQuery("#person-name").val().trim(),
-            customerEmail: jQuery("#phone-number").val().trim(),
-            customerID: jQuery("#user-email").val().trim(),
-            phoneNumber: jQuery("#customer-id").val().trim()
-        };
-        jQuery.post("/api/waitlist", newCharacter).then(function (data) {
-                alert("Added to wait list");
-        });
-    }
+    app.post("/api/waitlist", function (req, res) {
+        var newcharacter = req.body;
+        console.log(newcharacter);
+        waitList.push(newcharacter);
+        res.json(newcharacter);
+    });
 }
 
 app.listen(PORT, function () {

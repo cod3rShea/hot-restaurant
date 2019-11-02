@@ -44,26 +44,26 @@
                         <h3 class="card-title">Table Reservation</h3>
                         <form>
                             <div class="form-group">
-                                    <label for="person-name">Name</label>
-                                    <input type="text" class="form-control" id="person-name"
-                                    aria-describedby="User Name" placeholder="Enter name">
+                                <label for="person-name">Name</label>
+                                <input type="text" class="form-control" id="person-name" aria-describedby="User Name"
+                                    placeholder="Enter name">
                             </div>
                             <div class="form-group">
-                                    <label for="phone-number">Phone Number</label>
-                                    <input type="text" class="form-control" id="phone-number"
+                                <label for="phone-number">Phone Number</label>
+                                <input type="text" class="form-control" id="phone-number"
                                     aria-describedby="Phone Number" placeholder="216-555-5555">
                             </div>
                             <div class="form-group">
                                 <label for="user-email">Email address</label>
-                                <input type="email" class="form-control" id="user-email"
-                                    aria-describedby="User Email" placeholder="Enter email">
+                                <input type="email" class="form-control" id="user-email" aria-describedby="User Email"
+                                    placeholder="Enter email">
                             </div>
                             <div class="form-group">
-                                    <label for="customer-id">Customer ID</label>
-                                    <input type="text" class="form-control" id="customer-id"
-                                    aria-describedby="User ID" placeholder="userName120">
+                                <label for="customer-id">Customer ID</label>
+                                <input type="text" class="form-control" id="customer-id" aria-describedby="User ID"
+                                    placeholder="userName120">
                             </div>
-                            <button type="submit" id="add-btn" class="btn btn-primary" onclick="test();">Submit</button>
+                            <button type="submit" id="add-btn" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
 
@@ -80,8 +80,45 @@
         </div>
     </footer>
     <script type="text/javascript">
-        
-      </script>
+
+
+        jQuery.get("/api/tables/", function (data) {
+            if (data) {
+                if (data.length <= 5) {
+                    jQuery("#add-btn").on("click", function (event) {
+                        event.preventDefault();
+                        alert('test');
+                        var newCharacter = {
+                            customerName: jQuery("#person-name").val().trim(),
+                            customerEmail: jQuery("#phone-number").val().trim(),
+                            customerID: jQuery("#user-email").val().trim(),
+                            phoneNumber: jQuery("#customer-id").val().trim()
+                        };
+                        jQuery.post("/api/tables", newCharacter)
+                            .then(function (data) {
+                                alert("Added reservation");
+                            });
+                    });
+                } else {
+                    jQuery("#add-btn").on("click", function (event) {
+                        event.preventDefault();
+                        var newCharacter = {
+                            customerName: jQuery("#person-name").val().trim(),
+                            customerEmail: jQuery("#phone-number").val().trim(),
+                            customerID: jQuery("#user-email").val().trim(),
+                            phoneNumber: jQuery("#customer-id").val().trim()
+                        };
+                        jQuery.post("/api/waitlist", newCharacter)
+                            .then(function (data) {
+                                alert("Added to wait list");
+                            });
+                    });
+                }
+            }
+
+        });
+
+    </script>
 </body>
 
 </html>
