@@ -79,9 +79,11 @@
         jQuery.get("/api/tables/", function (data) {
             console.log(data);
             if (data) {
+                var m = 1;
                 for (var i = 0; i < data.length; i++) {
                     var container = jQuery('#reserved-list ul');
-                    container.append("<li><h2><span class='label label-primary'>" + i + "</span> |" + data[i].customerName + "</h2></li>");
+                    container.append("<li><h2><span class='label label-primary'>" + m + "</span> |" + data[i].customerName + "</h2></li>");
+                    m++;
                 }
             }
             else {
