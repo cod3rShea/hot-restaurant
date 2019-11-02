@@ -45,6 +45,9 @@
                     <div class="card-body">
                         <h3 class="card-title">Current Reservations</h3>
                         <div class="card-subtitle mb-2 text-muted" id="reserved-list">
+                            <ul>
+
+                            </ul>
                         </div>
                     </div>
 
@@ -77,7 +80,8 @@
             console.log(data);
             if (data) {
                 for (var i = 0; i < data.length; i++) {
-                    jQuery("#reserved-list").html("<h2><span class='label label-primary'>" + i + "</span> |" + data[i].customerName + "</h2>");
+                    var container = jQuery('#reserved-list ul');
+                    container.append("<li><h2><span class='label label-primary'>" + i + "</span> |" + data[i].customerName + "</h2></li>");
                 }
             }
             else {
